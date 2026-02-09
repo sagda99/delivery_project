@@ -1,39 +1,38 @@
 import 'package:delivery_project/core/assets/app_assets.dart';
 import 'package:delivery_project/core/assets/app_color.dart';
-import 'package:delivery_project/features/auth/presentation/screens/forgot_password.dart';
 import 'package:delivery_project/features/auth/presentation/widgets/validation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show TextInputFormatter;
+import 'package:flutter/services.dart';
 
-class LoginScreenBody extends StatefulWidget {
-  const LoginScreenBody({super.key});
+class CreateNewPasswordBody extends StatefulWidget {
+  const CreateNewPasswordBody({super.key});
 
   @override
-  State<LoginScreenBody> createState() => _LoginScreenBodyState();
+  State<CreateNewPasswordBody> createState() => _CreateNewPasswordBodyState();
 }
 
-class _LoginScreenBodyState extends State<LoginScreenBody> {
+class _CreateNewPasswordBodyState extends State<CreateNewPasswordBody> {
   late final width = MediaQuery.sizeOf(context).width;
   late final height = MediaQuery.sizeOf(context).height;
 
   final _keyForm = GlobalKey<FormState>();
 
-  late final TextEditingController phoneController;
   late final TextEditingController passwordController;
+  late final TextEditingController passwordConfirmController;
 
   final ValueNotifier<bool> isObscure = ValueNotifier<bool>(true);
 
   @override
   void initState() {
-    phoneController = TextEditingController();
     passwordController = TextEditingController();
+    passwordConfirmController = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
-    phoneController.dispose();
     passwordController.dispose();
+    passwordConfirmController.dispose();
     super.dispose();
   }
 
@@ -100,24 +99,40 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
           child: Column(
             children: [
               //password
-              _buildTextField(
-                controller: phoneController,
-                hintText: "Phone Number",
-                icon: Icons.phone_outlined,
-                validator: Validation.vaildatePhone,
-                keyboardType: TextInputType.phone,
-              ),
-              SizedBox(height: height * 0.02),
-
-              //password
               ValueListenableBuilder(
                 valueListenable: isObscure,
                 builder: (context, value, child) {
                   return _buildTextField(
                     controller: passwordController,
-                    hintText: "Password",
+                    hintText: "New Password",
                     icon: Icons.lock_outlined,
                     validator: Validation.validatePassword,
+                    obscureText: value,
+                    suffixIcon: IconButton(
+                      onPressed: () => isObscure.value = !value,
+                      icon: Icon(
+                        value ? Icons.visibility_off : Icons.visibility,
+                        color: AppColor.primaryColor,
+                      ),
+                    ),
+                  );
+                },
+              ),
+
+              SizedBox(height: height * 0.02),
+
+              //confirm password
+              ValueListenableBuilder(
+                valueListenable: isObscure,
+                builder: (context, value, child) {
+                  return _buildTextField(
+                    controller: passwordConfirmController,
+                    hintText: "Confirm your new Password",
+                    icon: Icons.lock_outlined,
+                    validator: (value) => Validation.validateConfirmPassword(
+                      value,
+                      passwordController.text,
+                    ),
                     obscureText: value,
                     suffixIcon: IconButton(
                       onPressed: () => isObscure.value = !value,
@@ -155,28 +170,13 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
                     );
                   },
                   child: const Text(
-                    "Log in",
+                    "sign in",
                     style: TextStyle(
                       color: AppColor.backgrondColor,
                       fontFamily: 'Poppins',
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
                     ),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => const ForgotPassword()),
-                    );
-                  },
-                  child: Text(
-                    "Forgot password?",
-                    style: TextStyle(color: Color.fromARGB(255, 141, 137, 137)),
                   ),
                 ),
               ),

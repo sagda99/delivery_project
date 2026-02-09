@@ -15,7 +15,7 @@ class SignOrLogScreenBody extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: const BoxDecoration(
-        color: Colors.white,
+        color: AppColor.backgrondColor,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(60),
           topRight: Radius.circular(60),
@@ -30,7 +30,10 @@ class SignOrLogScreenBody extends StatelessWidget {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColor.primaryColor,
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 14,
+                ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -44,7 +47,7 @@ class SignOrLogScreenBody extends StatelessWidget {
               child: const Text(
                 "Create Account",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColor.backgrondColor,
                   fontFamily: 'Poppins',
                   fontSize: 24,
                   fontWeight: FontWeight.w600,
@@ -58,8 +61,11 @@ class SignOrLogScreenBody extends StatelessWidget {
             height: height * 0.08,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                backgroundColor: AppColor.loginButtonColor,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 14,
+                ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -73,7 +79,7 @@ class SignOrLogScreenBody extends StatelessWidget {
               child: const Text(
                 "Log in",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColor.backgrondColor,
                   fontFamily: 'Poppins',
                   fontSize: 24,
                   fontWeight: FontWeight.w600,
@@ -82,10 +88,7 @@ class SignOrLogScreenBody extends StatelessWidget {
             ),
           ),
           SizedBox(height: height * 0.15),
-          const Text(
-            "Connect With",
-            style: TextStyle(color: Colors.black),
-          ),
+          const Text("Connect With", style: TextStyle(color: Colors.black)),
           SizedBox(height: height * 0.01),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

@@ -3,7 +3,6 @@ import 'package:delivery_project/features/auth/presentation/screens/login_screen
 import 'package:delivery_project/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:delivery_project/features/onboarding/presentation/widgets/onboarding_screen_body.dart';
 import 'package:delivery_project/features/splash/presentation/widgets/splash_screen_body.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,18 +14,20 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: Future.delayed(const Duration(seconds: AppDuration.duration)),
-        builder: (context, asyncSnapshot) {
-          if (asyncSnapshot.connectionState == ConnectionState.waiting) {
+        future: checkOnboarding(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
             return SplashScreenBody();
           }
 
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const OnboardingScreen()),
-          );
-        });
+          if (snapshot.hasData) {
+            
+            if (snapshot.data == false) {
+              return const OnboardingScreen(); 
+            } else {
+              return const LoginScreen();
+            }
+          }
 
           return SplashScreenBody();
         },
@@ -34,11 +35,8 @@ class SplashScreen extends StatelessWidget {
     );
   }
 }
-// Future<bool> checkOnboarding() async {
-//   await Future.delayed(const Duration(seconds: 1));
-//   final prefs = await SharedPreferences.getInstance();
-//     bool devMode = true;
-//   if (devMode) return false;
-
-//   return prefs.getBool('onBoardingView') ?? false;
-// }
+Future<bool> checkOnboarding() async {
+  await Future.delayed(const Duration(seconds: AppDuration.duration));
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getBool('onBoardingView') ?? false;
+}

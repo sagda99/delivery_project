@@ -209,7 +209,7 @@ class _OtpBodyState extends State<OtpBody> {
                 child: const Text(
                   "Verify",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColor.backgrondColor,
                     fontFamily: 'Poppins',
                     fontSize: 20,
                     fontWeight: FontWeight.w600,

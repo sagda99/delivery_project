@@ -61,16 +61,26 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                       final bool isLastPage =
                           index == OnboardingData.data.length - 1;
                       return TextButton(
-                        onPressed: () {
+                        onPressed: () async{
+                           final SharedPreferences prefs =
+                              await SharedPreferences.getInstance();
+                          await prefs.setBool("onBoardingView", true);
+
                           if (isLastPage) {
-                            Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => const SignOrLogScreen(),
-                            ),
-                          );
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const SignOrLogScreen(),
+
+                              ),
+                              (route) => false,
+                            );
+                          } else {
+                            controller.nextPage(
+                              duration: Duration(milliseconds: 300),
+                              curve: Curves.easeInOut,
+                            );
                           }
-                          
                         },
                         style: TextButton.styleFrom(
                           foregroundColor: AppColor.primaryColor,
@@ -80,8 +90,10 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                           children: [
                             const Icon(Icons.circle_rounded, size: 10),
                             const SizedBox(width: 6),
-                            Text(isLastPage ? 'Get Started' : 'Skip',
-                            style: TextStyle(fontWeight: FontWeight.bold),),
+                            Text(
+                              isLastPage ? 'Get Started' : 'Skip',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
                           ],
                         ),
                       );

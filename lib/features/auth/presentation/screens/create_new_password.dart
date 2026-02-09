@@ -1,13 +1,14 @@
 import 'package:delivery_project/core/assets/app_color.dart';
-import 'package:delivery_project/features/auth/presentation/widgets/otp_body.dart';
+import 'package:delivery_project/features/auth/presentation/widgets/create_new_password_body.dart';
 import 'package:flutter/material.dart';
 
-class OtpScreen extends StatelessWidget {
-  const OtpScreen({super.key});
+class CreateNewPassword extends StatelessWidget {
+  const CreateNewPassword({super.key});
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
+    //final width = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -20,13 +21,18 @@ class OtpScreen extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
+        centerTitle: true,
+        title: const Text(
+          'Welcome to La bouffe',
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+        ),
       ),
       body: Center(
         child: Column(
           children: [
             SizedBox(height: height * 0.04),
             Text(
-              "Enter your OTP",
+              "Create New Password",
               style: TextStyle(
                 color: AppColor.authTitleColor,
                 fontSize: 21,
@@ -34,11 +40,13 @@ class OtpScreen extends StatelessWidget {
               ),
             ),
             Text(
-              "An OTP Code will be sent to you to complete this action",
+              "Please enter a case sensitive password",
               style: TextStyle(color: AppColor.authTitleColor, fontSize: 10),
             ),
-            SizedBox(height: height * 0.09),
-            OtpBody(),
+
+            SizedBox(height: height * 0.04),
+
+            CreateNewPasswordBody(),
           ],
         ),
       ),

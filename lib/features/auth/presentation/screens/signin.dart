@@ -1,3 +1,4 @@
+import 'package:delivery_project/core/assets/app_color.dart';
 import 'package:delivery_project/features/auth/presentation/widgets/signin_body.dart';
 import 'package:flutter/material.dart';
 
@@ -11,9 +12,9 @@ class Signin extends StatelessWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
+      backgroundColor: AppColor.backgrondColor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColor.backgrondColor,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -21,30 +22,32 @@ class Signin extends StatelessWidget {
           },
         ),
         centerTitle: true,
-        title: const Text('Welcome to La bouffe',
-            style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600)),
+        title: const Text(
+          'Welcome to La bouffe',
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+        ),
       ),
       body: Center(
-      child: Column(
-        children: [
-          SizedBox(height: height * 0.04),
-          Text(
-            "Create an account",
-            style: TextStyle(
-              color: Color(0xff484646),
-              fontSize: 21,
-              fontWeight: FontWeight.bold,
+        child: Column(
+          children: [
+            SizedBox(height: height * 0.04),
+            Text(
+              "Create an account",
+              style: TextStyle(
+                color: AppColor.authTitleColor,
+                fontSize: 21,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          Text(
-            "Please fill in your accurate information",
-            style: TextStyle(color: Color(0xff484646), fontSize: 10),
-          ),
-          
-          SigninBody(),
-        ],
+            Text(
+              "Please fill in your accurate information",
+              style: TextStyle(color: AppColor.authTitleColor, fontSize: 10),
+            ),
+
+            SigninBody(),
+          ],
+        ),
       ),
-    ),
     );
   }
 }

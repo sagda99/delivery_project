@@ -1,3 +1,4 @@
+import 'package:delivery_project/core/assets/app_color.dart';
 import 'package:delivery_project/features/auth/presentation/widgets/login_screen_body.dart';
 import 'package:delivery_project/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
@@ -10,11 +11,11 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
 
-     return Scaffold(
+    return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
+      backgroundColor: AppColor.backgrondColor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColor.backgrondColor,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -23,27 +24,26 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
       body: Center(
-      child: Column(
-        children: [
-          SizedBox(height: height * 0.04),
-          Text(
-            "Welcome Back!",
-            style: TextStyle(
-              color: Color(0xff484646),
-              fontSize: 21,
-              fontWeight: FontWeight.bold,
+        child: Column(
+          children: [
+            SizedBox(height: height * 0.04),
+            Text(
+              "Welcome Back!",
+              style: TextStyle(
+                color: AppColor.authTitleColor,
+                fontSize: 21,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          Text(
-            "Please fill in your accurate information",
-            style: TextStyle(color: Color(0xff484646), fontSize: 10),
-          ),
-          SizedBox(height: height * 0.09),
-          LoginScreenBody(),
-          
-        ],
+            Text(
+              "Please fill in your accurate information",
+              style: TextStyle(color: AppColor.authTitleColor, fontSize: 10),
+            ),
+            SizedBox(height: height * 0.09),
+            LoginScreenBody(),
+          ],
+        ),
       ),
-    ),
     );
   }
 }
