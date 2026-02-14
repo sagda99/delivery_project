@@ -4,7 +4,6 @@ import 'package:delivery_project/core/assets/app_fonts.dart';
 import 'package:delivery_project/features/auth/presentation/widgets/sign_or_log_body.dart';
 import 'package:flutter/material.dart';
 
-
 class SignOrLogScreen extends StatelessWidget {
   const SignOrLogScreen({super.key});
 
@@ -13,12 +12,13 @@ class SignOrLogScreen extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: () {}),
       backgroundColor: AppColor.primaryColor,
       body: Column(
         children: [
           SizedBox(height: height * 0.15),
           AppAssets.logo,
-          Text(
+          const Text(
             "La bouffe",
             style: TextStyle(
               fontFamily: AppFonts.splashLogoFontfamily,
@@ -27,7 +27,7 @@ class SignOrLogScreen extends StatelessWidget {
               color: AppFonts.splashLogoFontColor,
             ),
           ),
-          Text(
+          const Text(
             "Our goal is your Satisfaction",
             style: TextStyle(
               fontFamily: AppFonts.splashLogoFontfamily,

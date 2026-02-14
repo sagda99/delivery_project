@@ -2,6 +2,7 @@ import 'package:delivery_project/core/assets/app_assets.dart';
 import 'package:delivery_project/core/assets/app_color.dart';
 import 'package:delivery_project/features/auth/presentation/screens/forgot_password.dart';
 import 'package:delivery_project/features/auth/presentation/widgets/validation.dart';
+import 'package:delivery_project/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show TextInputFormatter;
 
@@ -75,7 +76,7 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
         obscureText: obscureText,
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: TextStyle(color: Colors.grey),
+          hintStyle: const TextStyle(color: Colors.grey),
           prefixIcon: Icon(icon, color: AppColor.primaryColor),
           suffixIcon: suffixIcon,
           border: InputBorder.none,
@@ -100,6 +101,8 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
           child: Column(
             children: [
               //password
+
+              // space validation
               _buildTextField(
                 controller: phoneController,
                 hintText: "Phone Number",
@@ -129,7 +132,7 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
                   );
                 },
               ),
-              SizedBox(height: 100),
+              const SizedBox(height: 100),
 
               SizedBox(
                 width: double.infinity,
@@ -149,9 +152,10 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
                     if (_keyForm.currentState!.validate()) {
                       print("forn is valid");
                     }
-                    Navigator.push(
+                    Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (_) => const Placeholder()),
+                      MaterialPageRoute(builder: (_) => const HomeScreen()),
+                      (route) => false,
                     );
                   },
                   child: const Text(
@@ -174,7 +178,7 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
                       MaterialPageRoute(builder: (_) => const ForgotPassword()),
                     );
                   },
-                  child: Text(
+                  child: const Text(
                     "Forgot password?",
                     style: TextStyle(color: Color.fromARGB(255, 141, 137, 137)),
                   ),

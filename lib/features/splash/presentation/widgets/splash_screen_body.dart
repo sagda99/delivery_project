@@ -6,12 +6,8 @@ import 'package:flutter/material.dart';
 class SplashScreenBody extends StatelessWidget {
   const SplashScreenBody({super.key});
 
-  
-
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.sizeOf(context);
-
     return Scaffold(
       backgroundColor: AppColor.primaryColor,
       body: Center(
@@ -19,7 +15,7 @@ class SplashScreenBody extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AppAssets.logo,
-            Text(
+            const Text(
               "La bouffe",
               style: TextStyle(
                 fontFamily: AppFonts.splashLogoFontfamily,
@@ -28,7 +24,7 @@ class SplashScreenBody extends StatelessWidget {
                 color: AppFonts.splashLogoFontColor,
               ),
             ),
-            Text(
+            const Text(
               "Our goal is your Satisfaction",
               style: TextStyle(
                 fontFamily: AppFonts.splashLogoFontfamily,

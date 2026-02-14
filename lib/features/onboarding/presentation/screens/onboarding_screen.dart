@@ -1,5 +1,4 @@
 import 'package:delivery_project/core/assets/app_color.dart';
-import 'package:delivery_project/features/auth/presentation/screens/login_screen.dart';
 import 'package:delivery_project/features/auth/presentation/screens/sign_or_login_screen.dart';
 import 'package:delivery_project/features/onboarding/data/local.dart';
 import 'package:delivery_project/features/onboarding/presentation/widgets/onboarding_screen_body.dart';
@@ -61,8 +60,8 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                       final bool isLastPage =
                           index == OnboardingData.data.length - 1;
                       return TextButton(
-                        onPressed: () async{
-                           final SharedPreferences prefs =
+                        onPressed: () async {
+                          final SharedPreferences prefs =
                               await SharedPreferences.getInstance();
                           await prefs.setBool("onBoardingView", true);
 
@@ -71,13 +70,12 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (_) => const SignOrLogScreen(),
-
                               ),
                               (route) => false,
                             );
                           } else {
                             controller.nextPage(
-                              duration: Duration(milliseconds: 300),
+                              duration: const Duration(milliseconds: 300),
                               curve: Curves.easeInOut,
                             );
                           }
@@ -92,7 +90,9 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                             const SizedBox(width: 6),
                             Text(
                               isLastPage ? 'Get Started' : 'Skip',
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ],
                         ),

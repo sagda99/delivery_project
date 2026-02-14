@@ -1,9 +1,10 @@
-import 'package:delivery_project/core/assets/app_assets.dart';
 import 'package:delivery_project/core/assets/app_color.dart';
 import 'package:delivery_project/features/auth/presentation/widgets/alert_dialog_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
+
+import 'package:pinput/pinput.dart';
 
 class OtpBody extends StatefulWidget {
   const OtpBody({super.key});
@@ -17,8 +18,11 @@ class _OtpBodyState extends State<OtpBody> {
   late Timer _timer;
   int _seconds = 30;
 
+  late final TextEditingController controller;
+
   @override
   void initState() {
+    controller = TextEditingController();
     super.initState();
     startTimer();
   }
@@ -39,150 +43,185 @@ class _OtpBodyState extends State<OtpBody> {
   @override
   void dispose() {
     _timer.cancel();
+    controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(24),
+      padding: const EdgeInsets.all(24),
       child: Form(
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  height: 68,
-                  width: 64,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    alignment: Alignment.center,
-                    child: TextFormField(
-                      onChanged: (value) {
-                        if (value.length == 1) {
-                          FocusScope.of(context).nextFocus();
-                        }
-                      },
-                      keyboardType: TextInputType.number,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headlineMedium,
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(1),
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        counterText: "",
-                        hintText: "*",
-                        hintStyle: TextStyle(color: AppColor.primaryColor),
-                      ),
-                    ),
-                  ),
-                ),
+            Pinput(
+              pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
+              enableInteractiveSelection: true,
+              controller: controller,
+              keyboardType: TextInputType.number,
+              onTapOutside: (event) => FocusScope.of(context).unfocus(),
 
-                SizedBox(
-                  height: 68,
-                  width: 64,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    alignment: Alignment.center,
-                    child: TextFormField(
-                      onChanged: (value) {
-                        if (value.length == 1) {
-                          FocusScope.of(context).nextFocus();
-                        }
-                      },
-                      keyboardType: TextInputType.number,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headlineMedium,
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(1),
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        counterText: "",
-                        hintText: "*",
-                        hintStyle: TextStyle(color: AppColor.primaryColor),
-                      ),
-                    ),
-                  ),
+              validator: (value) {
+                if (value == null || value.isEmpty || value.length < 4) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Please enter a valid OTP")),
+                  );
+                }
+                return null;
+              },
+              focusedPinTheme: PinTheme(
+                height: 75,
+                width: 75,
+                textStyle: const TextStyle(),
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColor.primaryColor),
+                  borderRadius: BorderRadius.circular(8),
                 ),
-
-                SizedBox(
-                  height: 68,
-                  width: 64,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    alignment: Alignment.center,
-                    child: TextFormField(
-                      onChanged: (value) {
-                        if (value.length == 1) {
-                          FocusScope.of(context).nextFocus();
-                        }
-                      },
-                      keyboardType: TextInputType.number,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headlineMedium,
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(1),
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        counterText: "",
-                        hintText: "*",
-                        hintStyle: TextStyle(color: AppColor.primaryColor),
-                      ),
-                    ),
-                  ),
+              ),
+              submittedPinTheme: PinTheme(
+                height: 60,
+                width: 55,
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColor.loginButtonColor),
+                  borderRadius: BorderRadius.circular(8),
                 ),
-
-                SizedBox(
-                  height: 68,
-                  width: 64,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    alignment: Alignment.center,
-                    child: TextFormField(
-                      onChanged: (value) {
-                        if (value.length == 1) {
-                          FocusScope.of(context).nextFocus();
-                        }
-                      },
-                      keyboardType: TextInputType.number,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headlineMedium,
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(1),
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        counterText: "",
-                        hintText: "*",
-                        hintStyle: TextStyle(color: AppColor.primaryColor),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+              ),
+              length: 4,
             ),
 
-            SizedBox(height: 100),
+            //             Row(
+            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //               children: [
+            //                 SizedBox(
+            //                   height: 68,
+            //                   width: 64,
+            //                   child: Container(
+            //                     decoration: BoxDecoration(
+            //                       color: Colors.grey.shade200,
+            //                       borderRadius: BorderRadius.circular(12),
+            //                     ),
+            //                     alignment: Alignment.center,
+            //                     child: TextFormField(
+            //                       onChanged: (value) {
+            //                         if (value.length == 1) {
+            //                           FocusScope.of(context).nextFocus();
+            //                         }
+            //                       },
+            //                       keyboardType: TextInputType.number,
+            //                       textAlign: TextAlign.center,
+            //                       style: Theme.of(context).textTheme.headlineMedium,
+            //                       inputFormatters: [
+            //                         LengthLimitingTextInputFormatter(1),
+            //                         FilteringTextInputFormatter.digitsOnly,
+            //                       ],
+            //                       decoration: const InputDecoration(
+            //                         border: InputBorder.none,
+            //                         counterText: "",
+            //                         hintText: "*",
+            //                         hintStyle: TextStyle(color: AppColor.primaryColor),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                 ),
+            //
+            //                 SizedBox(
+            //                   height: 68,
+            //                   width: 64,
+            //                   child: Container(
+            //                     decoration: BoxDecoration(
+            //                       color: Colors.grey.shade200,
+            //                       borderRadius: BorderRadius.circular(12),
+            //                     ),
+            //                     alignment: Alignment.center,
+            //                     child: TextFormField(
+            //                       onChanged: (value) {
+            //                         if (value.length == 1) {
+            //                           FocusScope.of(context).nextFocus();
+            //                         }
+            //                       },
+            //                       keyboardType: TextInputType.number,
+            //                       textAlign: TextAlign.center,
+            //                       style: Theme.of(context).textTheme.headlineMedium,
+            //                       inputFormatters: [
+            //                         LengthLimitingTextInputFormatter(1),
+            //                         FilteringTextInputFormatter.digitsOnly,
+            //                       ],
+            //                       decoration: const InputDecoration(
+            //                         border: InputBorder.none,
+            //                         counterText: "",
+            //                         hintText: "*",
+            //                         hintStyle: TextStyle(color: AppColor.primaryColor),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                 ),
+            //
+            //                 SizedBox(
+            //                   height: 68,
+            //                   width: 64,
+            //                   child: Container(
+            //                     decoration: BoxDecoration(
+            //                       color: Colors.grey.shade200,
+            //                       borderRadius: BorderRadius.circular(12),
+            //                     ),
+            //                     alignment: Alignment.center,
+            //                     child: TextFormField(
+            //                       onChanged: (value) {
+            //                         if (value.length == 1) {
+            //                           FocusScope.of(context).nextFocus();
+            //                         }
+            //                       },
+            //                       keyboardType: TextInputType.number,
+            //                       textAlign: TextAlign.center,
+            //                       style: Theme.of(context).textTheme.headlineMedium,
+            //                       inputFormatters: [
+            //                         LengthLimitingTextInputFormatter(1),
+            //                         FilteringTextInputFormatter.digitsOnly,
+            //                       ],
+            //                       decoration: const InputDecoration(
+            //                         border: InputBorder.none,
+            //                         counterText: "",
+            //                         hintText: "*",
+            //                         hintStyle: TextStyle(color: AppColor.primaryColor),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                 ),
+            //
+            //                 SizedBox(
+            //                   height: 68,
+            //                   width: 64,
+            //                   child: Container(
+            //                     decoration: BoxDecoration(
+            //                       color: Colors.grey.shade200,
+            //                       borderRadius: BorderRadius.circular(12),
+            //                     ),
+            //                     alignment: Alignment.center,
+            //                     child: TextFormField(
+            //                       onChanged: (value) {
+            //                         if (value.length == 1) {
+            //                           FocusScope.of(context).nextFocus();
+            //                         }
+            //                       },
+            //                       keyboardType: TextInputType.number,
+            //                       textAlign: TextAlign.center,
+            //                       style: Theme.of(context).textTheme.headlineMedium,
+            //                       inputFormatters: [
+            //                         LengthLimitingTextInputFormatter(1),
+            //                         FilteringTextInputFormatter.digitsOnly,
+            //                       ],
+            //                       decoration: const InputDecoration(
+            //                         border: InputBorder.none,
+            //                         counterText: "",
+            //                         hintText: "*",
+            //                         hintStyle: TextStyle(color: AppColor.primaryColor),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                 ),
+            //               ],
+            //             ),
+            const SizedBox(height: 100),
 
             SizedBox(
               width: 500,
@@ -199,10 +238,12 @@ class _OtpBodyState extends State<OtpBody> {
                   ),
                 ),
                 onPressed: () {
+                  print(controller.text.trim());
+
                   showDialog(
                     context: context,
                     builder: (context) {
-                      return AlertDialogBody();
+                      return const AlertDialogBody();
                     },
                   );
                 },
@@ -224,7 +265,7 @@ class _OtpBodyState extends State<OtpBody> {
                   const TextSpan(text: 'Didn\'t receive the code?'),
                   TextSpan(
                     text: 'Rsend($_seconds s)',
-                    style: TextStyle(color: AppColor.primaryColor),
+                    style: const TextStyle(color: AppColor.primaryColor),
                   ),
                 ],
               ),

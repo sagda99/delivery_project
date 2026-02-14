@@ -2,7 +2,7 @@ import 'package:delivery_project/features/onboarding/data/model/onboarding_model
 
 class OnboardingData {
   static List<OnboardingModel> data = [
-    OnboardingModel(
+    const OnboardingModel(
       imagePath: 'assets/images/Character starve.png',
       title: """Don’t Starve, 
 Just Order""",
@@ -10,14 +10,15 @@ Just Order""",
           """Just order for your favorite food anytime, anywhere and receive your
   meal within a few minutes""",
     ),
-    OnboardingModel(
+    const OnboardingModel(
       imagePath: 'assets/images/FILLED_OUTLINE.png',
       title: "Fast Delivery",
       description:
           """Find a Restaurant place your order and get it deliver to your location within few minutes.""",
     ),
-    OnboardingModel(
-      imagePath: 'assets/images/—Pngtree—anti-epidemic logistics chef_5416092.png',
+    const OnboardingModel(
+      imagePath:
+          'assets/images/—Pngtree—anti-epidemic logistics chef_5416092.png',
       title: """Best Food App 
 For You""",
       description:

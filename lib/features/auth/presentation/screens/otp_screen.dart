@@ -12,20 +12,12 @@ class OtpScreen extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColor.backgrondColor,
-      appBar: AppBar(
-        backgroundColor: AppColor.backgrondColor,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
+      appBar: AppBar(backgroundColor: AppColor.backgrondColor),
       body: Center(
         child: Column(
           children: [
             SizedBox(height: height * 0.04),
-            Text(
+            const Text(
               "Enter your OTP",
               style: TextStyle(
                 color: AppColor.authTitleColor,
@@ -33,12 +25,12 @@ class OtpScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Text(
+            const Text(
               "An OTP Code will be sent to you to complete this action",
               style: TextStyle(color: AppColor.authTitleColor, fontSize: 10),
             ),
             SizedBox(height: height * 0.09),
-            OtpBody(),
+            const OtpBody(),
           ],
         ),
       ),

@@ -4,41 +4,32 @@ import 'package:flutter/material.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
-   final height = MediaQuery.sizeOf(context).height;
+    final height = MediaQuery.sizeOf(context).height;
 
-     return Scaffold(
+    return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: AppColor.backgrondColor,
+
       appBar: AppBar(
-        backgroundColor: AppColor.backgrondColor,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+        title: const Text(
+          "Forgotten Password",
+          style: TextStyle(
+            color: AppColor.authTitleColor,
+            fontSize: 21,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       body: Center(
-      child: Column(
-        children: [
-          SizedBox(height: height * 0.04),
-          Text(
-            "Forgotten Password",
-            style: TextStyle(
-              color: AppColor.authTitleColor,
-              fontSize: 21,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(height: height * 0.09),
-          ForgotPasswordBody(),
-          
-        ],
+        child: Column(
+          children: [
+            SizedBox(height: height * 0.04),
+            const ForgotPasswordBody(),
+          ],
+        ),
       ),
-    ),
     );
   }
 }

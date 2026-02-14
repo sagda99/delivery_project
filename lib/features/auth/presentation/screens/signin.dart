@@ -15,13 +15,6 @@ class Signin extends StatelessWidget {
       backgroundColor: AppColor.backgrondColor,
       appBar: AppBar(
         backgroundColor: AppColor.backgrondColor,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        centerTitle: true,
         title: const Text(
           'Welcome to La bouffe',
           style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
@@ -31,7 +24,7 @@ class Signin extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: height * 0.04),
-            Text(
+            const Text(
               "Create an account",
               style: TextStyle(
                 color: AppColor.authTitleColor,
@@ -39,12 +32,12 @@ class Signin extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Text(
+            const Text(
               "Please fill in your accurate information",
               style: TextStyle(color: AppColor.authTitleColor, fontSize: 10),
             ),
 
-            SigninBody(),
+            const SigninBody(),
           ],
         ),
       ),

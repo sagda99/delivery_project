@@ -15,13 +15,7 @@ class CreateNewPassword extends StatelessWidget {
       backgroundColor: AppColor.backgrondColor,
       appBar: AppBar(
         backgroundColor: AppColor.backgrondColor,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        centerTitle: true,
+
         title: const Text(
           'Welcome to La bouffe',
           style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
@@ -31,22 +25,25 @@ class CreateNewPassword extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: height * 0.04),
-            Text(
+            const Text(
               "Create New Password",
-              style: TextStyle(
+              style: const TextStyle(
                 color: AppColor.authTitleColor,
                 fontSize: 21,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Text(
+            const Text(
               "Please enter a case sensitive password",
-              style: TextStyle(color: AppColor.authTitleColor, fontSize: 10),
+              style: const TextStyle(
+                color: AppColor.authTitleColor,
+                fontSize: 10,
+              ),
             ),
 
             SizedBox(height: height * 0.04),
 
-            CreateNewPasswordBody(),
+            const CreateNewPasswordBody(),
           ],
         ),
       ),

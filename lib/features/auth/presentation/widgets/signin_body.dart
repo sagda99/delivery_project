@@ -82,7 +82,7 @@ class _SigninBodyState extends State<SigninBody> {
         obscureText: obscureText,
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: TextStyle(color: Colors.grey),
+          hintStyle: const TextStyle(color: Colors.grey),
           prefixIcon: Icon(icon, color: AppColor.primaryColor),
           suffixIcon: suffixIcon,
           border: InputBorder.none,
@@ -157,6 +157,7 @@ class _SigninBodyState extends State<SigninBody> {
                   SizedBox(height: height * 0.02),
 
                   //password
+                  // space validation
                   ValueListenableBuilder(
                     valueListenable: isObsecure,
                     builder: (context, value, child) {
@@ -164,6 +165,10 @@ class _SigninBodyState extends State<SigninBody> {
                         controller: passwordController,
                         hintText: "Password",
                         icon: Icons.lock_outlined,
+                        inputFormatters: [
+                          // don't allow user to add space
+                          FilteringTextInputFormatter.deny(RegExp(r'\s')),
+                        ],
                         validator: Validation.validatePassword,
                         obscureText: value,
                         suffixIcon: IconButton(
@@ -190,7 +195,7 @@ class _SigninBodyState extends State<SigninBody> {
                         onChanged: (newValue) {
                           isChecked.value = newValue!;
                         },
-                        title: Text(
+                        title: const Text(
                           "Yes, I want to receive offers and discounts",
                           style: TextStyle(fontSize: 11),
                         ),
@@ -232,17 +237,17 @@ class _SigninBodyState extends State<SigninBody> {
                   SizedBox(height: height * 0.02),
 
                   RichText(
-                    text: TextSpan(
-                      style: const TextStyle(fontSize: 11, color: Colors.black),
+                    text: const TextSpan(
+                      style: TextStyle(fontSize: 11, color: Colors.black),
                       children: [
-                        const TextSpan(
+                        TextSpan(
                           text: 'By creating an account you agree to the ',
                         ),
                         TextSpan(
                           text: 'privacy policy',
                           style: TextStyle(color: AppColor.primaryColor),
                         ),
-                        const TextSpan(text: ' and to the\n'),
+                        TextSpan(text: ' and to the\n'),
                         TextSpan(
                           text: 'terms of use',
                           style: TextStyle(color: AppColor.primaryColor),
