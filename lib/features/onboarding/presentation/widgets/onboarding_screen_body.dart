@@ -23,7 +23,7 @@ class OnboardingScreenBody extends StatelessWidget {
           flex: 1,
           child: Center(
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 // color: const Color.fromARGB(255, 231, 214, 219),
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(48.0),
@@ -34,33 +34,33 @@ class OnboardingScreenBody extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 15),
+        const SizedBox(height: 15),
         Expanded(
           flex: 1,
           child: Container(
-            padding: EdgeInsets.all(24),
+            padding: const EdgeInsets.all(24),
             color: AppColor.backgrondColor,
             child: Column(
               children: [
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   title,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: AppFonts.splashLogoFontfamily,
                     fontSize: AppFonts.onboardingTitleSize,
-                    color: AppFonts.onboardingTitleColor,
+                    color: Theme.of(context).colorScheme.onSurface,
                     fontWeight: FontWeight.w800,
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   description,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: AppFonts.splashLogoFontfamily,
                     fontSize: AppFonts.onboardingDescriptionSize,
-                    color: AppFonts.onboardingTitleColor,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
               ],

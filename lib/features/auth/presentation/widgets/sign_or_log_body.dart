@@ -14,9 +14,9 @@ class SignOrLogScreenBody extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
-        color: AppColor.backgrondColor,
-        borderRadius: BorderRadius.only(
+      decoration:  BoxDecoration(
+        color: Theme.of(context).scaffoldBackgroundColor,
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(60),
           topRight: Radius.circular(60),
         ),
@@ -88,7 +88,7 @@ class SignOrLogScreenBody extends StatelessWidget {
             ),
           ),
           SizedBox(height: height * 0.15),
-          const Text("Connect With", style: TextStyle(color: Colors.black)),
+          const Text("Connect With",),
           SizedBox(height: height * 0.01),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

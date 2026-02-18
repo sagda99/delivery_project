@@ -1,10 +1,12 @@
+// ignore_for_file: avoid_print
+
 import 'package:delivery_project/core/assets/app_assets.dart';
 import 'package:delivery_project/core/assets/app_color.dart';
 import 'package:delivery_project/features/auth/presentation/screens/forgot_password.dart';
 import 'package:delivery_project/features/auth/presentation/widgets/validation.dart';
 import 'package:delivery_project/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show TextInputFormatter;
+import 'package:flutter/services.dart' show TextInputFormatter, FilteringTextInputFormatter;
 
 class LoginScreenBody extends StatefulWidget {
   const LoginScreenBody({super.key});
@@ -121,6 +123,10 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
                     hintText: "Password",
                     icon: Icons.lock_outlined,
                     validator: Validation.validatePassword,
+                    inputFormatters: [
+                          // don't allow user to add space
+                          FilteringTextInputFormatter.deny(RegExp(r'\s')),
+                        ],
                     obscureText: value,
                     suffixIcon: IconButton(
                       onPressed: () => isObscure.value = !value,
@@ -186,7 +192,7 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
               ),
 
               SizedBox(height: height * 0.15),
-              const Text("Connect With", style: TextStyle(color: Colors.black)),
+              const Text("Connect With",),
               SizedBox(height: height * 0.01),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

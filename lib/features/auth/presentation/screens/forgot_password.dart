@@ -1,4 +1,3 @@
-import 'package:delivery_project/core/assets/app_color.dart';
 import 'package:delivery_project/features/auth/presentation/widgets/forgot_password_body.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +15,7 @@ class ForgotPassword extends StatelessWidget {
         title: const Text(
           "Forgotten Password",
           style: TextStyle(
-            color: AppColor.authTitleColor,
+            // color: AppColor.authTitleColor,
             fontSize: 21,
             fontWeight: FontWeight.bold,
           ),

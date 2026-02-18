@@ -1,4 +1,3 @@
-import 'package:delivery_project/core/assets/app_color.dart';
 import 'package:delivery_project/features/auth/presentation/widgets/signin_body.dart';
 import 'package:flutter/material.dart';
 
@@ -12,9 +11,9 @@ class Signin extends StatelessWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: AppColor.backgrondColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: AppColor.backgrondColor,
+        // backgroundColor: AppColor.backgrondColor,
         title: const Text(
           'Welcome to La bouffe',
           style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
@@ -24,17 +23,17 @@ class Signin extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: height * 0.04),
-            const Text(
+            Text(
               "Create an account",
               style: TextStyle(
-                color: AppColor.authTitleColor,
+                color: Theme.of(context).colorScheme.onSurface,
                 fontSize: 21,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Text(
+             Text(
               "Please fill in your accurate information",
-              style: TextStyle(color: AppColor.authTitleColor, fontSize: 10),
+              style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 10),
             ),
 
             const SigninBody(),

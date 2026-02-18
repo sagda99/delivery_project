@@ -1,4 +1,3 @@
-import 'package:delivery_project/core/assets/app_color.dart';
 import 'package:delivery_project/features/auth/presentation/widgets/otp_body.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +10,8 @@ class OtpScreen extends StatelessWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: AppColor.backgrondColor,
-      appBar: AppBar(backgroundColor: AppColor.backgrondColor),
+      // backgroundColor: AppColor.backgrondColor,
+      appBar: AppBar(backgroundColor: Theme.of(context).appBarTheme.backgroundColor),
       body: Center(
         child: Column(
           children: [
@@ -20,14 +19,14 @@ class OtpScreen extends StatelessWidget {
             const Text(
               "Enter your OTP",
               style: TextStyle(
-                color: AppColor.authTitleColor,
+                // color: AppColor.authTitleColor,
                 fontSize: 21,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const Text(
               "An OTP Code will be sent to you to complete this action",
-              style: TextStyle(color: AppColor.authTitleColor, fontSize: 10),
+              style: TextStyle(fontSize: 10),
             ),
             SizedBox(height: height * 0.09),
             const OtpBody(),

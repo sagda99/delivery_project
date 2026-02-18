@@ -1,4 +1,6 @@
-import 'package:delivery_project/core/assets/app_color.dart';
+// ignore_for_file: avoid_print
+
+import 'package:delivery_project/features/settings/presentation/settings_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,7 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
       length: 3,
 
       child: Scaffold(
-        floatingActionButton: FloatingActionButton(onPressed: () {}),
         appBar: AppBar(
           title: const Text('Home'),
           bottom: const TabBar(
@@ -30,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Home(),
             Scaffold(body: Center(child: Text("Profile"))),
-            Scaffold(body: Center(child: Text("Settings"))),
+            SettingsScreen(),
           ],
         ),
       ),

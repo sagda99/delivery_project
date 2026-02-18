@@ -21,33 +21,36 @@ class Validation {
   }
 
   static String? validatePassword(String? value) {
+    final RegExp passwordRegex = RegExp(r'\s');
     if (value == null || value.isEmpty) {
       return 'Please enter your password';
     } else if (value.length < 6) {
       return 'Password must be at least 6 characters';
     } else if (value.length > 20) {
       return 'Password must be less than 20 characters';
+    }else if (passwordRegex.hasMatch(value)) {
+      return 'Password should not contain spaces';
     }
     return null;
   }
 
   static String? vaildatePhone(String? value) {
-    final RegExp phoneRegex = RegExp(r'^\+\d+$');
     if (value == null || value.isEmpty) {
       return 'Please enter your phone';
     } else if (value.length < 7 || value.length > 15) {
-      return 'Please enter a valid phone';
-    } else if (!phoneRegex.hasMatch(value)) {
-      return 'Phone number must start with + and contain oonly digits';
-    }
+      return "Phone number shouldn't be less than 7 digits";
+    } 
     return null;
   }
   
   static String? validateConfirmPassword(String? value, String? password) {
+    final RegExp passwordRegex = RegExp(r'\s');
     if (value == null || value.isEmpty) {
       return 'Please confirm your password';
     } else if (value != password) {
       return 'Passwords do not match';
+    }else if (passwordRegex.hasMatch(value)) {
+      return 'Password should not contain spaces';
     }
     return null;
   }

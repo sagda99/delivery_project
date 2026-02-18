@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:delivery_project/core/assets/app_assets.dart';
 import 'package:delivery_project/core/assets/app_color.dart';
 import 'package:delivery_project/features/auth/presentation/widgets/validation.dart';
@@ -21,6 +23,7 @@ class _CreateNewPasswordBodyState extends State<CreateNewPasswordBody> {
   late final TextEditingController passwordConfirmController;
 
   final ValueNotifier<bool> isObscure = ValueNotifier<bool>(true);
+  final ValueNotifier<bool> isObscureConfirm = ValueNotifier<bool>(true);
 
   @override
   void initState() {
@@ -74,7 +77,7 @@ class _CreateNewPasswordBodyState extends State<CreateNewPasswordBody> {
         obscureText: obscureText,
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: TextStyle(color: Colors.grey),
+          hintStyle: const TextStyle(color: Colors.grey),
           prefixIcon: Icon(icon, color: AppColor.primaryColor),
           suffixIcon: suffixIcon,
           border: InputBorder.none,
@@ -107,6 +110,10 @@ class _CreateNewPasswordBodyState extends State<CreateNewPasswordBody> {
                     hintText: "New Password",
                     icon: Icons.lock_outlined,
                     validator: Validation.validatePassword,
+                    inputFormatters: [
+                          // don't allow user to add space
+                          FilteringTextInputFormatter.deny(RegExp(r'\s')),
+                        ],
                     obscureText: value,
                     suffixIcon: IconButton(
                       onPressed: () => isObscure.value = !value,
@@ -123,10 +130,14 @@ class _CreateNewPasswordBodyState extends State<CreateNewPasswordBody> {
 
               //confirm password
               ValueListenableBuilder(
-                valueListenable: isObscure,
+                valueListenable: isObscureConfirm,
                 builder: (context, value, child) {
                   return _buildTextField(
                     controller: passwordConfirmController,
+                    inputFormatters: [
+                          // don't allow user to add space
+                          FilteringTextInputFormatter.deny(RegExp(r'\s')),
+                        ],
                     hintText: "Confirm your new Password",
                     icon: Icons.lock_outlined,
                     validator: (value) => Validation.validateConfirmPassword(
@@ -135,7 +146,7 @@ class _CreateNewPasswordBodyState extends State<CreateNewPasswordBody> {
                     ),
                     obscureText: value,
                     suffixIcon: IconButton(
-                      onPressed: () => isObscure.value = !value,
+                      onPressed: () => isObscureConfirm.value = !value,
                       icon: Icon(
                         value ? Icons.visibility_off : Icons.visibility,
                         color: AppColor.primaryColor,
@@ -144,7 +155,7 @@ class _CreateNewPasswordBodyState extends State<CreateNewPasswordBody> {
                   );
                 },
               ),
-              SizedBox(height: 100),
+              const SizedBox(height: 100),
 
               SizedBox(
                 width: double.infinity,
@@ -182,7 +193,7 @@ class _CreateNewPasswordBodyState extends State<CreateNewPasswordBody> {
               ),
 
               SizedBox(height: height * 0.15),
-              const Text("Connect With", style: TextStyle(color: Colors.black)),
+              const Text("Connect With",),
               SizedBox(height: height * 0.01),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -12,7 +12,6 @@ class SignOrLogScreen extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: () {}),
       backgroundColor: AppColor.primaryColor,
       body: Column(
         children: [

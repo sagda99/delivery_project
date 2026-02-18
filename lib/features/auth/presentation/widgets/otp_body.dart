@@ -1,7 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:delivery_project/core/assets/app_color.dart';
 import 'package:delivery_project/features/auth/presentation/widgets/alert_dialog_body.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'dart:async';
 
 import 'package:pinput/pinput.dart';
@@ -260,7 +261,7 @@ class _OtpBodyState extends State<OtpBody> {
             ),
             RichText(
               text: TextSpan(
-                style: const TextStyle(fontSize: 11, color: Colors.black),
+                style: const TextStyle(fontSize: 11,),
                 children: [
                   const TextSpan(text: 'Didn\'t receive the code?'),
                   TextSpan(

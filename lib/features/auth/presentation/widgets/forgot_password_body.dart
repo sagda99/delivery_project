@@ -1,7 +1,6 @@
 import 'package:delivery_project/core/assets/app_color.dart';
 import 'package:delivery_project/features/auth/presentation/screens/otp_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ForgotPasswordBody extends StatefulWidget {
   const ForgotPasswordBody({super.key});
@@ -33,19 +32,19 @@ class _ForgotPasswordBodyState extends State<ForgotPasswordBody> {
               ],
             ),
             child: TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: "Email/Phone number",
                 border: InputBorder.none,
               ),
             ),
           ),
           SizedBox(height: height * 0.02),
-          Text(
+          const Text(
             "An OTP Code will be sent to you to complete this action",
             style: TextStyle(color: Color(0xff484646), fontSize: 12),
           ),
 
-          SizedBox(height: 120),
+          const SizedBox(height: 120),
 
           SizedBox(
             width: 500,
@@ -64,7 +63,7 @@ class _ForgotPasswordBodyState extends State<ForgotPasswordBody> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => OtpScreen()),
+                  MaterialPageRoute(builder: (_) => const OtpScreen()),
                 );
               },
               child: const Text(

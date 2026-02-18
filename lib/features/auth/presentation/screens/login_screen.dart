@@ -1,4 +1,3 @@
-import 'package:delivery_project/core/assets/app_color.dart';
 import 'package:delivery_project/features/auth/presentation/widgets/login_screen_body.dart';
 import 'package:flutter/material.dart';
 
@@ -22,14 +21,14 @@ class LoginScreen extends StatelessWidget {
             const Text(
               "Welcome Back!",
               style: TextStyle(
-                color: AppColor.authTitleColor,
+                // color: AppColor.authTitleColor,
                 fontSize: 21,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const Text(
               "Please fill in your accurate information",
-              style: TextStyle(color: AppColor.authTitleColor, fontSize: 10),
+              style: TextStyle( fontSize: 10),
             ),
             SizedBox(height: height * 0.09),
             const LoginScreenBody(),

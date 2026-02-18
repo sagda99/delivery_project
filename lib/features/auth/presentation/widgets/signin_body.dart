@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:delivery_project/core/assets/app_color.dart';
 import 'package:delivery_project/features/auth/presentation/widgets/validation.dart';
 import 'package:flutter/material.dart';
@@ -237,18 +239,18 @@ class _SigninBodyState extends State<SigninBody> {
                   SizedBox(height: height * 0.02),
 
                   RichText(
-                    text: const TextSpan(
-                      style: TextStyle(fontSize: 11, color: Colors.black),
+                    text: TextSpan(
+                      style: TextStyle(fontSize: 11, color: Theme.of(context).colorScheme.onSurface),
                       children: [
-                        TextSpan(
+                        const TextSpan(
                           text: 'By creating an account you agree to the ',
                         ),
-                        TextSpan(
+                        const TextSpan(
                           text: 'privacy policy',
                           style: TextStyle(color: AppColor.primaryColor),
                         ),
-                        TextSpan(text: ' and to the\n'),
-                        TextSpan(
+                        const TextSpan(text: ' and to the\n'),
+                        const TextSpan(
                           text: 'terms of use',
                           style: TextStyle(color: AppColor.primaryColor),
                         ),

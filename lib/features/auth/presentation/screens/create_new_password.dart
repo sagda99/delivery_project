@@ -1,4 +1,3 @@
-import 'package:delivery_project/core/assets/app_color.dart';
 import 'package:delivery_project/features/auth/presentation/widgets/create_new_password_body.dart';
 import 'package:flutter/material.dart';
 
@@ -12,9 +11,9 @@ class CreateNewPassword extends StatelessWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: AppColor.backgrondColor,
+      // backgroundColor: AppColor.backgrondColor,
       appBar: AppBar(
-        backgroundColor: AppColor.backgrondColor,
+        // backgroundColor: AppColor.backgrondColor,
 
         title: const Text(
           'Welcome to La bouffe',
@@ -27,16 +26,16 @@ class CreateNewPassword extends StatelessWidget {
             SizedBox(height: height * 0.04),
             const Text(
               "Create New Password",
-              style: const TextStyle(
-                color: AppColor.authTitleColor,
+              style:TextStyle(
+                // color: AppColor.authTitleColor,
                 fontSize: 21,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const Text(
               "Please enter a case sensitive password",
-              style: const TextStyle(
-                color: AppColor.authTitleColor,
+              style: TextStyle(
+                // color: AppColor.authTitleColor,
                 fontSize: 10,
               ),
             ),

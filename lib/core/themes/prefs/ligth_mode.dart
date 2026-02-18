@@ -8,8 +8,8 @@ ThemeData lightMode() {
       centerTitle: true,
       // backgroundColor: AppColor.primaryColor,
     ),
-    floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      backgroundColor: AppColor.primaryColor,
-    ),
+    iconTheme: const IconThemeData(color: AppColor.backgrondColor),
+    colorScheme: const ColorScheme.light(
+      primary: AppColor.primaryColor,)
   );
 }
