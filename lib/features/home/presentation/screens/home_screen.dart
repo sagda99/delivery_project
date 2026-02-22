@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'package:delivery_project/features/profile/presentation/screens/profile_screen.dart';
 import 'package:delivery_project/features/settings/presentation/settings_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: const TabBarView(
           children: [
             Home(),
-            Scaffold(body: Center(child: Text("Profile"))),
+            ProfileScreen(),
             SettingsScreen(),
           ],
         ),

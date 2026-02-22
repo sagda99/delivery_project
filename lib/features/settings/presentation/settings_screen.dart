@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
 
-import 'package:delivery_project/core/themes/prefs/theme_provider.dart';
+import 'package:delivery_project/features/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -110,13 +110,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                   ],
                 ),
-                InkWell(
-                      onTap: () => print("mmmmm"),
-                      child: const ListTile(
-                        leading: Icon(Icons.person_rounded),
-                        title: Text("Edit profile"),
-                      ),
-                    ),
+                
               ],
             ),
           );

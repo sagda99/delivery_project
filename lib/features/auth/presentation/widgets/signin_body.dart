@@ -2,8 +2,12 @@
 
 import 'package:delivery_project/core/assets/app_color.dart';
 import 'package:delivery_project/features/auth/presentation/widgets/validation.dart';
+import 'package:delivery_project/features/home/presentation/screens/home_screen.dart';
+import 'package:delivery_project/features/onboarding/data/model/user_model.dart';
+import 'package:delivery_project/features/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 class SigninBody extends StatefulWidget {
   const SigninBody({super.key});
@@ -216,9 +220,23 @@ class _SigninBodyState extends State<SigninBody> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       if (_keyForm.currentState!.validate()) {
-                        print("Form is valid");
+                        final user = UserModel(
+                          firstName: firstNameController.text.trim(),
+                          lastName: secondNameController.text.trim(),
+                          email: emailController.text.trim(),
+                          phone: phoneController.text.trim(),
+                        );
+                         final success = await context.read<AuthProvider>().register(user);
+
+                        if (success && context.mounted) {
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(builder: (_) => const HomeScreen()),
+                            (route) => false,
+                          );
+                        }
                       }
                       // Navigator.push(
                       //   context,
@@ -240,7 +258,10 @@ class _SigninBodyState extends State<SigninBody> {
 
                   RichText(
                     text: TextSpan(
-                      style: TextStyle(fontSize: 11, color: Theme.of(context).colorScheme.onSurface),
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
                       children: [
                         const TextSpan(
                           text: 'By creating an account you agree to the ',

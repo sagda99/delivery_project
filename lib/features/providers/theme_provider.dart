@@ -1,4 +1,4 @@
-import 'package:delivery_project/core/themes/prefs/prefernce.dart';
+import 'package:delivery_project/core/services/pref_themes.dart';
 import 'package:flutter/material.dart';
 
 class ThemeProvider with ChangeNotifier {
