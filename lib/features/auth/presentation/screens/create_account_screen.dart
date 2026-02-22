@@ -1,4 +1,4 @@
-import 'package:delivery_project/features/auth/presentation/widgets/signin_body.dart';
+import 'package:delivery_project/features/auth/presentation/widgets/create_account_body.dart';
 import 'package:flutter/material.dart';
 
 class Signin extends StatelessWidget {

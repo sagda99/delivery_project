@@ -34,7 +34,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               },
             ),
             SimpleDialogOption(
-              child: Text("Choose from gallery"),
+              child: const Text("Choose from gallery"),
               onPressed: () async {
                 Navigator.of(context).pop();
                 Uint8List? file = await pickImage(ImageSource.gallery);

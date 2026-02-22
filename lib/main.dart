@@ -4,8 +4,6 @@ import 'package:delivery_project/features/providers/theme_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'core/services/pref_themes.dart';
-import 'package:image_picker/image_picker.dart';
-import 'features/utils/utils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

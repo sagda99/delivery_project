@@ -1,7 +1,7 @@
 import 'package:delivery_project/core/assets/app_assets.dart';
 import 'package:delivery_project/core/assets/app_color.dart';
 import 'package:delivery_project/features/auth/presentation/screens/login_screen.dart';
-import 'package:delivery_project/features/auth/presentation/screens/signin.dart';
+import 'package:delivery_project/features/auth/presentation/screens/create_account_screen.dart';
 import 'package:flutter/material.dart';
 
 class SignOrLogScreenBody extends StatelessWidget {
